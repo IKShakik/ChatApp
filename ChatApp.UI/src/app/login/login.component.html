@@ -1,0 +1,25 @@
+<div style="margin:15px;">
+  <h5 class="page-header inline-header">Login</h5>
+  <hr class="page-header-hr" />
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="dataForm" novalidate>
+        <div class="row">
+          <div class="col-md-6">
+            <label for="email">Email</label>
+            <input [(ngModel)]="user.Email" class="form-control input-group-sm" id="email" type="email" formControlName="email">
+          </div>
+          <div class="col-md-6">
+            <button [disabled]="!dataForm.valid" (click)="submit();"
+                    class="btn btn-sm btn-primary pull-right float-right" type="submit">
+              <i aria-hidden="true" class="fa fa-floppy-o"></i> Submit
+            </button>
+          </div>
+          <div class="col-md-6">
+            <p>Not Registered User? Click <a href="../register/register.component.html">here</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

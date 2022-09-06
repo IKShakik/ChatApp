@@ -1,0 +1,4 @@
+C:\Users\Ibrahim\source\repos\ChatApp.API\ChatApp.UI\obj\Debug\ChatApp.UI.esproj.SuggestedBindingRedirects.cache
+C:\Users\Ibrahim\source\repos\ChatApp.API\ChatApp.UI\obj\Debug\ChatApp.UI.esproj.CoreCompileInputs.cache
+C:\Users\Ibrahim\source\repos\ChatApp\ChatApp.UI\obj\Debug\ChatApp.UI.esproj.SuggestedBindingRedirects.cache
+C:\Users\Ibrahim\source\repos\ChatApp\ChatApp.UI\obj\Debug\ChatApp.UI.esproj.CoreCompileInputs.cache

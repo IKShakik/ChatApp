@@ -1,0 +1,35 @@
+<div style="margin:15px;">
+    <h5 class="page-header inline-header">Register</h5>
+    <hr class="page-header-hr"/>
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="dataForm" novalidate>
+          <div class="row">
+            <div class="col-md-4">
+              <label for="email">Email</label>
+              <input [(ngModel)]="user.Email" class="form-control input-group-sm" id="email" type="email" formControlName="email">
+            </div>
+            <div class="col-md-4">
+              <label for="code">First Name</label>
+              <input [(ngModel)]="user.FirstName" class="form-control input-group-sm" id="code" type="text" formControlName="firstName">
+            </div>
+            <div class="col-md-4">
+              <label for="name">Last Name</label>
+              <input [(ngModel)]="user.LastName" class="form-control input-group-sm" id="name" type="text" formControlName="lastName">
+            </div>
+          </div>
+  
+          <hr class="page-header-hr"/>
+  
+          <div class="row">
+            <div class="col-md-12 pull-right float-right">
+              <button [disabled]="!dataForm.valid" (click)="submit();"
+                      class="btn btn-sm btn-primary pull-right float-right" type="submit">
+                <i aria-hidden="true" class="fa fa-floppy-o"></i> Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
