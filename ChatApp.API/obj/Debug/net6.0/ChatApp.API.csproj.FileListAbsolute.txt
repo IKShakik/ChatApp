@@ -306,3 +306,4 @@ C:\Users\Ibrahim\source\repos\ChatApp\ChatApp.API\bin\Debug\net6.0\ru\System.Pri
 C:\Users\Ibrahim\source\repos\ChatApp\ChatApp.API\bin\Debug\net6.0\tr\System.Private.ServiceModel.resources.dll
 C:\Users\Ibrahim\source\repos\ChatApp\ChatApp.API\bin\Debug\net6.0\zh-Hans\System.Private.ServiceModel.resources.dll
 C:\Users\Ibrahim\source\repos\ChatApp\ChatApp.API\bin\Debug\net6.0\zh-Hant\System.Private.ServiceModel.resources.dll
+C:\Users\Ibrahim\source\repos\ChatApp\ChatApp.API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

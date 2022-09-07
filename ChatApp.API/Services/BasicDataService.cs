@@ -30,5 +30,17 @@ namespace ChatApp.API.Services
                 throw new Exception(ex.Message);
             }
         }
+        public User GetUserByEmail(string email)
+        {
+            try
+            {
+                var userDa = new UserDA();
+                return userDa.GetUserByEmail(email);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

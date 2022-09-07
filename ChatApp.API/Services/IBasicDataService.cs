@@ -10,6 +10,9 @@ namespace ChatApp.API.Services
         IEnumerable<User> GetAllUsers();
 
         [OperationContract]
+        User GetUserByEmail(string email);
+
+        [OperationContract]
         string SaveUser(User user);
     }
 }

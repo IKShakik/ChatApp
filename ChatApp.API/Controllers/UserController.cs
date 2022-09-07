@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ChatApp.API.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]/")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -47,7 +47,16 @@ namespace ChatApp.API.Controllers
         //     return forecast;
         // }
 
+        [HttpPost]
+        [Route("SaveUser")]
+        public string SaveUser(User user)
+        {
+            var response = _basicDataService.SaveUser(user);
+            return response.ToString();
+        }
+
         [HttpGet]
+        [Route("GetUsers")]
         public IEnumerable<User> GetUsers()
         {
             //var user = new User() { UserID = 1, FirstName = "IK", LastName = "Shakik" };
@@ -56,11 +65,12 @@ namespace ChatApp.API.Controllers
             return users;
         }
 
-        [HttpPost]
-        public string SaveUser(User user)
+        [HttpGet]
+        [Route("GetUserByEmail/{email}")]
+        public User GetUserByEmail(string email)
         {
-            var response = _basicDataService.SaveUser(user);
-            return response.ToString();
+            var user = _basicDataService.GetUserByEmail(email);
+            return user;
         }
     }
 }

@@ -4,6 +4,9 @@ using System.Configuration;
 using ChatApp.API.Models;
 using ChatApp.API.Services;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -19,6 +22,19 @@ builder.Services.AddDbContext<AppDBContext>(options => options.UseSqlServer(conf
 // services.AddDbContext<ReportAppContext>(options => options.UseSqlServer(connection));
 
 builder.Services.AddTransient<IBasicDataService, BasicDataService>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters()
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+    };
+});
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -51,6 +67,8 @@ app.MapControllers();
 // .WithName("GetWeatherForecast");
 // app.UseCors();
 // app.UseRouting();
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();
 
 public record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)

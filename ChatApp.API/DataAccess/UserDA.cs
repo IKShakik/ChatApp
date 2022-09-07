@@ -20,10 +20,23 @@ namespace ChatApp.API.DataAccess
             _dbContext.SaveChanges();
             return "Saved successfully.";
         }
+
         public IEnumerable<User> GetAllUsers()
         {
             users = _dbContext.Users.ToList();
             return users;
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            foreach (var user in _dbContext.Users)
+            {
+                if (user.Email == email)
+                {
+                    return user;
+                }
+            }
+            return new User();
         }
     }
 }

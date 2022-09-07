@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Chat App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="logOut()">Logout</a>
+        </li>
+        <li *ngIf="!isUserAuthenticated()" class="nav-item active">
+          <a class="nav-link" routerLink="/product">Products</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- <div class="table-responsive" style="text-align: center;">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">User ID</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | async; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{user.productName}}</td>
+        <td>{{user.productDescription}}</td>
+        <td>{{user.productCost}}</td>
+        <td>{{user.productStock}}</td>
+        <td>
+            <button type="button" class="btn1" matTooltip="Click Edit Button" (click)='ProductDetailsToEdit(prd.productId)'>Edit</button>
+                |
+            <button type="button" class="btn1" matTooltip="Click Delete Button" (click)="DeleteProduct(prd.productId)">Delete</button> 
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div> -->
