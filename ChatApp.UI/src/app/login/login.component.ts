@@ -7,6 +7,7 @@ import { User } from '../models/User';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JWTTokenResponse } from '../models/JWTTokenResponse';
+//import * as console from 'console';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
   dataForm: FormGroup;
   user: User;
   email: string;
+  response: JWTTokenResponse;
 
   constructor(public formBuilder: FormBuilder,
     public apiService: ApiService,
@@ -32,6 +34,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.user = new User();
+    this.response = new JWTTokenResponse();
   }
 
 
@@ -88,32 +91,31 @@ export class LoginComponent implements OnInit {
 
       this.subscribers.getUsers
         = this.getDataSubscriber$
-        = this.apiService.httpPost('Authentication/Lgin', this.user)
+        = this.apiService.httpPost('Authentication/Login', this.user)
           .subscribe(response => {
-              //this.user = response as any;
-              var x: JWTTokenResponse = response as any;
-              const token = (<any>response).token;
+             this.response = response as any;
+             //console.log("parameter: ", this.response);
+             const token = (<any>response).token;
               localStorage.setItem("jwt", token);
+              localStorage.setItem('currentUser', JSON.stringify((<any>response)));   
+              // localStorage.setItem("UserID", (<any>response).UserID.toString());
+              // localStorage.setItem("Email", (<any>response).Email);
+              // localStorage.setItem("FirstName", (<any>response).FirstName);
+              // localStorage.setItem("LastName", (<any>response).LastName);
               this.invalidLogin = false;
-              this.router.navigate(["/home"]);
-              console.log('user response: ', x);
-            }, err => {
-                this.invalidLogin = true;
-              });
 
-              // this.http.post(this.url, this.user, {
-              //       headers: new HttpHeaders({
-              //         "Content-Type": "application/json"
-              //       })
-              //     }).subscribe(response => {
-              //       const token = (<any>response).token;
-              //       localStorage.setItem("jwt", token);
-              //       this.invalidLogin = false;
-              //       this.router.navigate(["/home"]);
-              //       console.log('user response: ', response);
-              //     }, err => {
-              //       this.invalidLogin = true;
-              //     });
+          },
+          err => { this.invalidLogin = true; },
+            () => {
+              // this.user.UserID = this.response.UserID;
+              // this.user.Email = this.response.Email;
+              // this.user.FirstName = this.response.FirstName;
+              // this.user.LastName = this.response.LastName;
+
+              this.router.navigate(["/user-list"]);
+              // this.notificationService.showSuccess('Saved successfully!!');
+              // this.router.navigateByUrl('/quotation/committee-list');
+            });
   }
 
   public createDataForm() {

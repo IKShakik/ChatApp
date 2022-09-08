@@ -13,10 +13,13 @@ export class UserListComponent implements OnInit {
   subscribers: any;
   getDataSubscriber$: any;
   users: User[];
+  user: User = new User();
 
   constructor(public apiService: ApiService, public router: Router, private jwtHelper: JwtHelperService) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.user)
   }
 
   getData() {

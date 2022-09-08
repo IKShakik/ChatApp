@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 export const routes: Routes = [
   {
@@ -14,10 +14,10 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'home',
-    component: HomepageComponent,
+    path: 'user-list',
+    component: UserListComponent,
     data: {
-      title: 'Home'
+      title: 'User List'
     }
   },
   {

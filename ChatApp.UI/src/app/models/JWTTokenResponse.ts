@@ -1,3 +1,7 @@
 export class JWTTokenResponse{
-    Token: string;
+  Token: string;
+  UserID: number;
+  Email: string;
+  FirstName: string;
+  LastName: string;
 }

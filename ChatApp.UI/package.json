@@ -20,6 +20,7 @@
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
     "@auth0/angular-jwt": "^5.0.2",
+    "@microsoft/signalr": "^6.0.8",
     "jest-editor-support": "*",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

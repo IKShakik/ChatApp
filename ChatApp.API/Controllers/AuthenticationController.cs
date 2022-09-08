@@ -1,12 +1,10 @@
 ﻿using ChatApp.API.Models;
-using Microsoft.AspNetCore.Http;
+using ChatApp.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using ChatApp.API.Services;
-using NuGet.Protocol.Plugins;
 
 namespace ChatApp.API.Controllers
 {
@@ -27,7 +25,7 @@ namespace ChatApp.API.Controllers
         }
 
 
-        [HttpPost("Lgin")]
+        [HttpPost("Login")]
         public IActionResult Lgin(User user2)
         {
             if (user2 is null)
@@ -63,7 +61,11 @@ namespace ChatApp.API.Controllers
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
                 return Ok(new JWTTokenResponse
                 {
-                    Token = tokenString
+                    Token = tokenString,
+                    UserID = user.UserID,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Email = user.Email
                 });
             }
 
@@ -84,7 +86,7 @@ namespace ChatApp.API.Controllers
 
 
         [HttpPost]
-        [Route("Login")]
+        [Route("Lgin")]
         public async Task<IActionResult> Login(User userData)
         {
             if (userData != null && userData.Email != null)
